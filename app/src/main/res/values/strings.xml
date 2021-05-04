@@ -1,0 +1,40 @@
+<resources>
+    <string name="app_name">Stonks</string>
+
+    <string name="edittext_constant_multiplier">1.0</string>
+    <string name="one_week_period_button_text">1W</string>
+    <string name="one_month_period_button_text">1M</string>
+    <string name="six_months_period_button_text">6M</string>
+    <string name="one_year_period_button_text">1Y</string>
+    <string name="five_years_period_button_text">5Y</string>
+
+    <string name="edittext_constant_hint">Amount</string>
+    <string name="button_query_result">Push</string>
+    <string name="switch_prediction">Prediction</string>
+    <string name="last_updated_date">Data for: %1$s</string>
+
+    <string name="toast_check_internet">Please, check internet connection! Turn on the internet RIGHT NOW!!!</string>
+    <string name="toast_wrong_input">Wrong input</string>
+    <string name="toast_api_returned_null">Server didn\'t respond, please try again later</string>
+
+    <string-array name="rates">
+        <item>AUD, Australian Dollar</item>
+        <item>BRL, Brazilian Real</item>
+        <item>CAD, Canadian Dollar</item>
+        <item>CHF, Swiss Franc</item>
+        <item>DKK, Danish Krone</item>
+        <item>EUR, Euro</item>
+        <item>ILS, Israeli New Sheqel</item>
+        <item>JPY, Japanese Yen</item>
+        <item>KRW, South Korean Won</item>
+        <item>MXN, Mexican Peso</item>
+        <item>NOK, Norwegian Krone</item>
+        <item>NZD, New Zealand Dollar</item>
+        <item>PLN, Polish Zloty</item>
+        <item>RUB, Russian Ruble</item>
+        <item>SEK, Swedish Krona</item>
+        <item>SGD, Singapore Dollar</item>
+        <item>TRY, Turkish Lira</item>
+        <item>USD, United States Dollar</item>
+    </string-array>
+</resources>
