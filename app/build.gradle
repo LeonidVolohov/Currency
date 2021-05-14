@@ -18,9 +18,20 @@ android {
     }
 
     buildTypes {
+        debug {
+            buildConfigField 'String', "CURRENCY_API_KEY_DATE", CURRENCY_API_KEY_DATE
+            buildConfigField 'String', "CURRENCY_API_KEY_TARGETRATE_PRICE", CURRENCY_API_KEY_TARGETRATE_PRICE
+            buildConfigField 'String', "CURRENCY_API_KEY_PERIOD_DATA", CURRENCY_API_KEY_PERIOD_DATA
+            buildConfigField 'String', "CURRENCYLAYER_API_KEY", CURRENCYLAYER_API_KEY
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            buildConfigField 'String', "CURRENCY_API_KEY_DATE", CURRENCY_API_KEY_DATE
+            buildConfigField 'String', "CURRENCY_API_KEY_TARGETRATE_PRICE", CURRENCY_API_KEY_TARGETRATE_PRICE
+            buildConfigField 'String', "CURRENCY_API_KEY_PERIOD_DATA", CURRENCY_API_KEY_PERIOD_DATA
+            buildConfigField 'String', "CURRENCYLAYER_API_KEY", CURRENCYLAYER_API_KEY
         }
     }
     compileOptions {
