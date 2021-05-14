@@ -1,7 +1,9 @@
 package com.volohov.currency.api
 
+import com.volohov.currency.api.ApiConstants.Companion.CURRENCYLAYER_BASE_URL
 import com.volohov.currency.api.ApiConstants.Companion.CURRENCY_API_ALPHAVANTAGE_BASE_URL
 import com.volohov.currency.api.currencyalphavantage.CurrencyAlphaVantageRequests
+import com.volohov.currency.api.currencylayer.CurrencyLayerRequests
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -22,3 +24,11 @@ val currencyAlphaVantageApi: CurrencyAlphaVantageRequests = Retrofit.Builder()
     .client(client)
     .build()
     .create(CurrencyAlphaVantageRequests::class.java)
+
+val currencyLayerApi: CurrencyLayerRequests = Retrofit.Builder()
+    .baseUrl(CURRENCYLAYER_BASE_URL)
+    .addConverterFactory(GsonConverterFactory.create())
+    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+    .client(client)
+    .build()
+    .create(CurrencyLayerRequests::class.java)

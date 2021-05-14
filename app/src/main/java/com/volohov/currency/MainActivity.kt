@@ -2,22 +2,18 @@ package com.volohov.currency
 
 import android.os.Bundle
 import android.view.View
-import android.view.ViewGroup
 import android.widget.AdapterView
-import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.volohov.currency.api.currencyalphavantage.CurrencyAlphaVantageUtils
-import com.volohov.currency.calculations.Prediction
+import com.volohov.currency.api.currencylayer.CurrencyLayerUtils
 import com.volohov.currency.ui.UiConstants
 import com.volohov.currency.ui.chart.StockLineChart
 import com.volohov.currency.ui.currency.CurrencyUtils
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import kotlinx.android.synthetic.main.activity_main.*
+import java.sql.Timestamp
 import java.text.SimpleDateFormat
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
@@ -40,20 +36,6 @@ class MainActivity : AppCompatActivity() {
         val currencyUtils = CurrencyUtils(disposable = compositeDisposable)
         val currencyLineChart = StockLineChart(currency_chart)
 
-        disposable = CurrencyAlphaVantageUtils().getLastRefreshedDate()
-                .subscribe(
-                        { response ->
-                            last_date_update.text = this.getString(
-                                    R.string.last_updated_date,
-                                    response.data["6. Last Refreshed"]
-                            )
-                        },
-                        { failure ->
-                            Toast.makeText(this, failure.message, Toast.LENGTH_SHORT)
-                                    .show()
-                        }
-                )
-
         base_rate_spinner.setSelection(defaultCurrencyInd)
         base_rate_spinner?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
@@ -66,8 +48,6 @@ class MainActivity : AppCompatActivity() {
                 rate_number.setText(UiConstants.DEFAULT_EDIT_TEXT_NUMBER.toString())
                 currencyLineChart.clearChart()
                 rate_result.text = ""
-                rate_difference.text = ""
-                rate_difference.visibility = View.GONE
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {}
@@ -84,8 +64,6 @@ class MainActivity : AppCompatActivity() {
                 rate_number.setText(UiConstants.DEFAULT_EDIT_TEXT_NUMBER.toString())
                 currencyLineChart.clearChart()
                 rate_result.text = ""
-                rate_difference.text = ""
-                rate_difference.visibility = View.GONE
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {}
@@ -153,8 +131,6 @@ class MainActivity : AppCompatActivity() {
                         rate_number.text.toString(),
                         UiConstants.DEFAULT_EDIT_TEXT_NUMBER.toString()
                 )
-
-                rate_difference.visibility = View.GONE
             } else {
                 isNumeric = try {
                     rate_number.text.toString().toDouble()
@@ -164,134 +140,48 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 if (isNumeric) {
-                    rate_difference.visibility = View.GONE
-
                     if (rate_number.text.toString() == (1.0).toString()) {
-                        disposable = CurrencyAlphaVantageUtils().getDataForPeriod(
-                                fromCurrencyName = baseRateSpinnerString,
-                                toCurrencyName = targetRateSpinnerString
+                        disposable = CurrencyLayerUtils().getTargetRatePrice(
+                            baseRate = baseRateSpinnerString,
+                            targetRate = targetRateSpinnerString
                         )
-                                .subscribe(
-                                        { response ->
-                                            if (!isPrediction) {
-                                                val rateList: MutableList<Double> = arrayListOf()
-                                                val dateList: MutableList<String>? =
-                                                        response.data.keys.toMutableList()
-                                                val processedDateList: MutableList<String>? = mutableListOf()
+                            .subscribe(
+                                { response ->
+                                    val date = SimpleDateFormat("EEEE, d MMMM yyyy HH:mm:ss").format(Date(Timestamp(response.timestamp).time))
+                                    last_date_update.text = this.getString(
+                                        R.string.last_updated_date,
+                                        date.toString()
+                                    )
 
-                                                val startDate = LocalDate.now().minusMonths(1)
-                                                        .format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
-                                                val endDate = LocalDate.now()
-                                                        .format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
-
-                                                if (dateList != null) {
-                                                    for (date in dateList) {
-                                                        if ((LocalDate.parse(date)
-                                                                        .isEqual(LocalDate.parse(startDate)) || LocalDate.parse(
-                                                                        date
-                                                                ).isAfter(LocalDate.parse(startDate))) &&
-                                                                LocalDate.parse(date)
-                                                                        .isBefore(LocalDate.parse(endDate)) || LocalDate.parse(
-                                                                        date
-                                                                ).isEqual(LocalDate.parse(endDate))
-                                                        ) {
-                                                            response.data[date]?.get("4. close")?.toDouble()
-                                                                    ?.let { rateList.add(it) }
-                                                            processedDateList?.add(date)
-                                                        }
-                                                    }
-                                                }
-
-                                                rate_result.text =
-                                                        CurrencyUtils(null).doubleScale(rateList[rateList.size - 1])
-                                            } else {
-                                                val rateList: MutableList<Double> = arrayListOf()
-                                                val dateList: MutableList<String>? =
-                                                        response.data.keys.toMutableList()
-                                                val processedDateList: MutableList<String>? = mutableListOf()
-
-                                                val startDate = LocalDate.now().minusMonths(1)
-                                                        .format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
-                                                val endDate = LocalDate.now()
-                                                        .format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
-                                                if (dateList != null) {
-                                                    for (date in dateList) {
-                                                        if ((LocalDate.parse(date)
-                                                                        .isEqual(LocalDate.parse(startDate)) || LocalDate.parse(
-                                                                        date
-                                                                ).isAfter(LocalDate.parse(startDate))) &&
-                                                                LocalDate.parse(date)
-                                                                        .isBefore(LocalDate.parse(endDate)) || LocalDate.parse(
-                                                                        date
-                                                                ).isEqual(LocalDate.parse(endDate))
-                                                        ) {
-                                                            response.data[date]?.get("4. close")?.toDouble()
-                                                                    ?.let { rateList.add(it) }
-                                                            processedDateList?.add(date)
-                                                        }
-                                                    }
-                                                }
-
-                                                val param = LinearLayout.LayoutParams(
-                                                        ViewGroup.LayoutParams.WRAP_CONTENT,
-                                                        ViewGroup.LayoutParams.WRAP_CONTENT,
-                                                        50f
-                                                )
-                                                rate_number.layoutParams = param
-                                                rate_difference.layoutParams = param
-
-                                                param.marginEnd = 8
-                                                rate_result.layoutParams = param
-
-                                                rate_difference.visibility = View.VISIBLE
-
-                                                rate_result.text =
-                                                        CurrencyUtils(null).doubleScale(rateList[rateList.size - 1])
-
-                                                val dateListLong: ArrayList<Long> = arrayListOf()
-                                                if (processedDateList != null) {
-                                                    for (item in processedDateList) {
-                                                        dateListLong.add(
-                                                                (SimpleDateFormat("yyyy-MM-dd").parse(item).toInstant()
-                                                                        .toEpochMilli())
-                                                        )
-                                                    }
-                                                }
-
-                                                val entries = rateList.toList()
-                                                val predictionRate = Prediction().datePrediction(
-                                                        dateListLong.toTypedArray(),
-                                                        entries.toTypedArray(),
-                                                        1
-                                                )
-
-                                                rate_difference.text = currencyUtils.doubleScale(predictionRate, 5)
-                                            }
-                                        },
-                                        { failure ->
-                                            Toast.makeText(this, failure.message, Toast.LENGTH_SHORT)
-                                                    .show()
-                                        }
-                                )
+                                    rate_result.text = response.quotes[baseRateSpinnerString + targetRateSpinnerString].toString()
+                                },
+                                { failure ->
+                                    Toast.makeText(this, failure.message, Toast.LENGTH_SHORT)
+                                        .show()
+                                }
+                            )
                     } else {
-                        disposable = CurrencyAlphaVantageUtils().getTargetRatePrice(
-                                fromCurrencyName = baseRateSpinnerString,
-                                toCurrencyName = targetRateSpinnerString
+                        disposable = CurrencyLayerUtils().getConvertRatePrice(
+                            baseRate = baseRateSpinnerString,
+                            targetRate = targetRateSpinnerString,
+                            amount =  rate_number.text.toString()
                         )
-                                .subscribe(
-                                        { response ->
-                                            rate_result.text = response.data["5. Exchange Rate"]?.let { it ->
-                                                CurrencyUtils(null).stringMultiplication(
-                                                        rate_number.text.toString(),
-                                                        it
-                                                )
-                                            }
-                                        },
-                                        { failure ->
-                                            Toast.makeText(this, failure.message, Toast.LENGTH_SHORT)
-                                                    .show()
-                                        }
-                                )
+                            .subscribe(
+                                { response ->
+                                    val date = SimpleDateFormat("EEEE, d MMMM yyyy HH:mm:ss").format(Date(Timestamp(response.info.timestamp).time))
+                                    last_date_update.text = this.getString(
+                                        R.string.last_updated_date,
+                                        date.toString()
+                                    )
+
+                                    rate_result.text = response.result.toString()
+                                },
+                                { failure ->
+                                    Toast.makeText(this, failure.message, Toast.LENGTH_SHORT)
+                                        .show()
+                                }
+                            )
+
                     }
 
                     currencyUtils.plotRatesPerPeriod(

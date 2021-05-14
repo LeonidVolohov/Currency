@@ -13,3 +13,6 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+# Personal Api Key
+/app/src/main/java/com/volohov/currency/api/ApiConstants.kt

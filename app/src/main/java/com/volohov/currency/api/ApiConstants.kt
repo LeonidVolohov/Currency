@@ -7,6 +7,7 @@ class ApiConstants {
         const val CURRENCY_API_KEY_TARGETRATE_PRICE = "OEGLRPXLQZU6KGB8"
         const val CURRENCY_API_KEY_PERIOD_DATA = "QK5BJQVB98T0NXCV"
 
-        // const val CURRENCY_API_KEY_??? = "D8NAR3XCJO6R9ZEO"
+        const val CURRENCYLAYER_BASE_URL = "https://api.currencylayer.com/"
+        const val CURRENCYLAYER_API_KEY = "d3109fb32ca12e4226b1613f3329f622"
     }
 }
