@@ -21,7 +21,7 @@
         android:layout_marginBottom="@dimen/margin_padding_size_small"
         android:paddingEnd="@dimen/margin_padding_size_medium"
         android:paddingStart="@dimen/margin_padding_size_medium"
-        android:textSize="@dimen/text_size_small"
+        android:textSize="@dimen/text_size_smaller"
         android:gravity="center"
         tools:text="Данные на: 20.20.2020" />
 
@@ -140,13 +140,13 @@
         tools:text="6.75" />
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cardview"
+        android:id="@+id/cardview_differencies_rate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/rate_result"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rate_result"
+        app:layout_constraintBottom_toTopOf="@id/cardview_primary_rates"
         card_view:cardCornerRadius="8dp"
         card_view:cardElevation="4dp"
         card_view:cardUseCompatPadding="true"
@@ -154,13 +154,139 @@
         android:layout_marginStart="@dimen/margin_padding_size_medium"
         android:layout_marginTop="@dimen/margin_padding_size_medium"
         android:layout_marginEnd="@dimen/margin_padding_size_small"
-        android:layout_marginBottom="@dimen/text_size_smallest" >
+        android:layout_marginBottom="@dimen/text_size_smallest">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true">
+
+            <RelativeLayout
+                android:id="@+id/relative_differencies_yesterday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/textview_differenies_yesterday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_padding_size_small"
+                    android:layout_marginTop="@dimen/margin_padding_size_small"
+                    android:layout_marginBottom="@dimen/margin_padding_size_small"
+                    android:layout_marginEnd="@dimen/margin_padding_size_medium"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentStart="true"
+                    android:textSize="@dimen/text_size_medium"
+                    android:text="Yesterday" />
+
+                <TextView
+                    android:id="@+id/textview_differenies_yesterday_result"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/text_size_small"
+                    android:layout_marginTop="@dimen/margin_padding_size_small"
+                    android:layout_marginBottom="@dimen/margin_padding_size_small"
+                    android:layout_marginEnd="@dimen/margin_padding_size_medium"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:textSize="@dimen/text_size_medium"
+                    tools:text="1.023040" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relative_differencies_last_month"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/relative_differencies_yesterday"
+                android:layout_marginTop="0dp">
+
+                <TextView
+                    android:id="@+id/textview_differenies_last_month"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="@dimen/margin_padding_size_small"
+                    android:layout_marginTop="@dimen/margin_padding_size_small"
+                    android:layout_marginEnd="@dimen/margin_padding_size_medium"
+                    android:layout_marginBottom="@dimen/margin_padding_size_small"
+                    android:layout_alignParentStart="true"
+                    android:textSize="@dimen/text_size_medium"
+                    android:text="Last month" />
+
+                <TextView
+                    android:id="@+id/textview_differenies_last_month_result"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="@dimen/text_size_small"
+                    android:layout_marginTop="@dimen/margin_padding_size_small"
+                    android:layout_marginEnd="@dimen/margin_padding_size_medium"
+                    android:layout_marginBottom="@dimen/margin_padding_size_small"
+                    android:textSize="@dimen/text_size_medium"
+                    tools:text="1.023040" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relative_differencies_last_year"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/relative_differencies_last_month">
+
+                <TextView
+                    android:id="@+id/textview_differenies_last_year"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_padding_size_small"
+                    android:layout_marginTop="@dimen/margin_padding_size_small"
+                    android:layout_marginBottom="@dimen/margin_padding_size_small"
+                    android:layout_marginEnd="@dimen/margin_padding_size_medium"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentStart="true"
+                    android:textSize="@dimen/text_size_medium"
+                    android:text="Last year" />
+
+                <TextView
+                    android:id="@+id/textview_differenies_last_year_result"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/text_size_small"
+                    android:layout_marginTop="@dimen/margin_padding_size_small"
+                    android:layout_marginBottom="@dimen/margin_padding_size_small"
+                    android:layout_marginEnd="@dimen/margin_padding_size_medium"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:textSize="@dimen/text_size_medium"
+                    tools:text="1.023040" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardview_primary_rates"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_padding_size_medium"
+        android:layout_marginEnd="@dimen/margin_padding_size_small"
+        android:layout_marginTop="@dimen/margin_padding_size_smaller"
+        android:layout_marginBottom="@dimen/margin_padding_size_small"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        card_view:cardCornerRadius="8dp"
+        card_view:cardElevation="4dp"
+        card_view:cardUseCompatPadding="true"
+        card_view:strokeWidth="1dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true">
 
             <RelativeLayout
@@ -172,37 +298,37 @@
                     android:id="@+id/first_country_image"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_united_states"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
                     android:layout_marginStart="@dimen/margin_padding_size_small"
                     android:layout_marginTop="@dimen/margin_padding_size_small"
+                    android:layout_marginEnd="@dimen/margin_padding_size_small"
                     android:layout_marginBottom="@dimen/margin_padding_size_small"
-                    android:layout_marginEnd="@dimen/margin_padding_size_small" />
+                    android:src="@drawable/ic_united_states" />
 
                 <TextView
                     android:id="@+id/first_currency_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
                     android:layout_marginStart="@dimen/text_size_small"
                     android:layout_marginTop="@dimen/margin_padding_size_small"
-                    android:layout_marginBottom="@dimen/margin_padding_size_small"
                     android:layout_marginEnd="@dimen/margin_padding_size_medium"
-                    android:layout_alignParentTop="true"
+                    android:layout_marginBottom="@dimen/margin_padding_size_small"
                     android:layout_toEndOf="@id/first_country_image"
-                    android:textSize="@dimen/text_size_medium"
-                    tools:text="USD" />
+                    android:text="USD"
+                    android:textSize="@dimen/text_size_medium" />
 
                 <TextView
                     android:id="@+id/first_primary_currency_result"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/text_size_small"
-                    android:layout_marginTop="@dimen/margin_padding_size_small"
-                    android:layout_marginBottom="@dimen/margin_padding_size_small"
-                    android:layout_marginEnd="@dimen/margin_padding_size_medium"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
+                    android:layout_marginStart="@dimen/text_size_small"
+                    android:layout_marginTop="@dimen/margin_padding_size_small"
+                    android:layout_marginEnd="@dimen/margin_padding_size_medium"
+                    android:layout_marginBottom="@dimen/margin_padding_size_small"
                     android:textSize="@dimen/text_size_medium"
                     tools:text="1.023040" />
             </RelativeLayout>
@@ -236,8 +362,8 @@
                     android:layout_marginEnd="@dimen/margin_padding_size_medium"
                     android:layout_marginBottom="@dimen/margin_padding_size_small"
                     android:layout_toEndOf="@id/second_country_image"
-                    android:textSize="@dimen/text_size_medium"
-                    tools:text="EUR" />
+                    android:text="EUR"
+                    android:textSize="@dimen/text_size_medium" />
 
                 <TextView
                     android:id="@+id/second_primary_currency_result"
@@ -263,37 +389,37 @@
                     android:id="@+id/third_country_image"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_united_kingdom"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
                     android:layout_marginStart="@dimen/margin_padding_size_small"
                     android:layout_marginTop="@dimen/margin_padding_size_small"
+                    android:layout_marginEnd="@dimen/margin_padding_size_small"
                     android:layout_marginBottom="@dimen/margin_padding_size_small"
-                    android:layout_marginEnd="@dimen/margin_padding_size_small" />
+                    android:src="@drawable/ic_united_kingdom" />
 
                 <TextView
                     android:id="@+id/third_currency_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
                     android:layout_marginStart="@dimen/text_size_small"
                     android:layout_marginTop="@dimen/margin_padding_size_small"
-                    android:layout_marginBottom="@dimen/margin_padding_size_small"
                     android:layout_marginEnd="@dimen/margin_padding_size_medium"
-                    android:layout_alignParentTop="true"
+                    android:layout_marginBottom="@dimen/margin_padding_size_small"
                     android:layout_toEndOf="@id/third_country_image"
-                    android:textSize="@dimen/text_size_medium"
-                    tools:text="GBP" />
+                    android:text="GBP"
+                    android:textSize="@dimen/text_size_medium" />
 
                 <TextView
                     android:id="@+id/third_primary_currency_result"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/text_size_small"
-                    android:layout_marginTop="@dimen/margin_padding_size_small"
-                    android:layout_marginBottom="@dimen/margin_padding_size_small"
-                    android:layout_marginEnd="@dimen/margin_padding_size_medium"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
+                    android:layout_marginStart="@dimen/text_size_small"
+                    android:layout_marginTop="@dimen/margin_padding_size_small"
+                    android:layout_marginEnd="@dimen/margin_padding_size_medium"
+                    android:layout_marginBottom="@dimen/margin_padding_size_small"
                     android:textSize="@dimen/text_size_medium"
                     tools:text="1.023040" />
             </RelativeLayout>
@@ -308,37 +434,37 @@
                     android:id="@+id/fourth_country_image"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_japan"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
                     android:layout_marginStart="@dimen/margin_padding_size_small"
                     android:layout_marginTop="@dimen/margin_padding_size_small"
+                    android:layout_marginEnd="@dimen/margin_padding_size_small"
                     android:layout_marginBottom="@dimen/margin_padding_size_small"
-                    android:layout_marginEnd="@dimen/margin_padding_size_small" />
+                    android:src="@drawable/ic_japan" />
 
                 <TextView
                     android:id="@+id/fourth_currency_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
                     android:layout_marginStart="@dimen/text_size_small"
                     android:layout_marginTop="@dimen/margin_padding_size_small"
-                    android:layout_marginBottom="@dimen/margin_padding_size_small"
                     android:layout_marginEnd="@dimen/margin_padding_size_medium"
-                    android:layout_alignParentTop="true"
+                    android:layout_marginBottom="@dimen/margin_padding_size_small"
                     android:layout_toEndOf="@id/fourth_country_image"
-                    android:textSize="@dimen/text_size_medium"
-                    tools:text="JPY" />
+                    android:text="JPY"
+                    android:textSize="@dimen/text_size_medium" />
 
                 <TextView
                     android:id="@+id/fourth_primary_currency_result"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/text_size_small"
-                    android:layout_marginTop="@dimen/margin_padding_size_small"
-                    android:layout_marginBottom="@dimen/margin_padding_size_small"
-                    android:layout_marginEnd="@dimen/margin_padding_size_medium"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
+                    android:layout_marginStart="@dimen/text_size_small"
+                    android:layout_marginTop="@dimen/margin_padding_size_small"
+                    android:layout_marginEnd="@dimen/margin_padding_size_medium"
+                    android:layout_marginBottom="@dimen/margin_padding_size_small"
                     android:textSize="@dimen/text_size_medium"
                     tools:text="1.023040" />
             </RelativeLayout>
@@ -353,37 +479,37 @@
                     android:id="@+id/fifth_country_image"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_switzerland"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
                     android:layout_marginStart="@dimen/margin_padding_size_small"
                     android:layout_marginTop="@dimen/margin_padding_size_smaller"
+                    android:layout_marginEnd="@dimen/margin_padding_size_small"
                     android:layout_marginBottom="@dimen/margin_padding_size_small"
-                    android:layout_marginEnd="@dimen/margin_padding_size_small" />
+                    android:src="@drawable/ic_switzerland" />
 
                 <TextView
                     android:id="@+id/fifth_currency_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
                     android:layout_marginStart="@dimen/text_size_small"
                     android:layout_marginTop="@dimen/margin_padding_size_smaller"
-                    android:layout_marginBottom="@dimen/margin_padding_size_smaller"
                     android:layout_marginEnd="@dimen/margin_padding_size_medium"
-                    android:layout_alignParentTop="true"
+                    android:layout_marginBottom="@dimen/margin_padding_size_smaller"
                     android:layout_toEndOf="@id/fifth_country_image"
-                    android:textSize="@dimen/text_size_medium"
-                    tools:text="CHF" />
+                    android:text="CHF"
+                    android:textSize="@dimen/text_size_medium" />
 
                 <TextView
                     android:id="@+id/fifth_primary_currency_result"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/text_size_small"
-                    android:layout_marginTop="@dimen/margin_padding_size_small"
-                    android:layout_marginBottom="@dimen/margin_padding_size_small"
-                    android:layout_marginEnd="@dimen/margin_padding_size_medium"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
+                    android:layout_marginStart="@dimen/text_size_small"
+                    android:layout_marginTop="@dimen/margin_padding_size_small"
+                    android:layout_marginEnd="@dimen/margin_padding_size_medium"
+                    android:layout_marginBottom="@dimen/margin_padding_size_small"
                     android:textSize="@dimen/text_size_medium"
                     tools:text="1.023040" />
             </RelativeLayout>

@@ -1,9 +1,7 @@
 package com.volohov.currency.ui
 
-import android.gesture.Prediction
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.volohov.currency.ChartFragment

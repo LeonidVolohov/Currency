@@ -14,6 +14,15 @@ interface CurrencyLayerRequests {
         @Query("format") format: String = "1"
     ): Observable<CurrencyLayerDataModel.CurrencyTargetRateData>
 
+    @GET("historical")
+    fun getHistoricalRatePrice(
+        @Query("source") baseRate: String,
+        @Query("currencies") targetRate: String,
+        @Query("access_key") apiKey: String,
+        @Query("date") date: String,
+        @Query("format") format: String = "1"
+    ): Observable<CurrencyLayerDataModel.CurrencyTargetRateData>
+
     @GET("convert")
     fun getConvertRatePrice (
         @Query("from") baseRate: String,

@@ -1,12 +1,10 @@
 package com.volohov.currency
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.volohov.currency.api.ApiConstants
 import com.volohov.currency.api.currencylayer.CurrencyLayerUtils
 import com.volohov.currency.ui.UiConstants
 import com.volohov.currency.ui.chart.StockLineChart
