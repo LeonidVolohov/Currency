@@ -16,7 +16,7 @@
             android:name=".ui.MainActivityBottom"
             android:label="@string/title_activity_main_bottom"
             android:theme="@style/Theme.Currency.NoActionBar" />-->
-        <activity android:name=".ui.MainActivityBottom">
+        <activity android:name=".MainActivityBottom">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -1,13 +1,12 @@
-package com.volohov.currency.ui
+package com.volohov.currency
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.volohov.currency.ChartFragment
-import com.volohov.currency.CurrencyFragment
-import com.volohov.currency.PredictionFragment
-import com.volohov.currency.R
+import com.volohov.currency.ui.chartfragment.ChartFragment
+import com.volohov.currency.ui.currencyfragment.CurrencyFragment
+import com.volohov.currency.ui.predictionfragment.PredictionFragment
 import kotlinx.android.synthetic.main.activity_main_bottomnavview.*
 
 class MainActivityBottom : AppCompatActivity() {
@@ -20,12 +19,9 @@ class MainActivityBottom : AppCompatActivity() {
 
         selectedFragment = CurrencyFragment()
 
-        bottom_navigation_view.selectedItemId = R.id.currency_tab
         supportFragmentManager.beginTransaction()
             .replace(R.id.fragment_container, selectedFragment)
             .commitNow()
-
-        bottom_navigation_view.selectedItemId = R.id.currency_tab
         bottom_navigation_view.setOnNavigationItemSelectedListener(navigationListener)
     }
 
@@ -46,6 +42,10 @@ class MainActivityBottom : AppCompatActivity() {
 
                 else -> TODO("?")
             }
+
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, selectedFragment)
+                .commitNow()
 
             true
         }

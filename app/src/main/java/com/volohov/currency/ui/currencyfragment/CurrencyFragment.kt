@@ -1,4 +1,4 @@
-package com.volohov.currency
+package com.volohov.currency.ui.currencyfragment
 
 //import kotlinx.android.synthetic.main.activity_main.*
 import android.os.Bundle
@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.volohov.currency.R
 import com.volohov.currency.api.currencylayer.CurrencyLayerUtils
 import com.volohov.currency.ui.UiConstants
 import com.volohov.currency.ui.currency.CurrencyUtils
