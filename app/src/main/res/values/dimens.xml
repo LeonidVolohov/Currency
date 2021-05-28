@@ -18,7 +18,7 @@
     <dimen name="margin_padding_size_xlarge">32dp</dimen>
 
     <!-- Custom Values -->
-    <dimen name="toggle_button_width">76dp</dimen>
+    <dimen name="toggle_button_width">65dp</dimen>
     <dimen name="spinner_width">128dp</dimen>
     <dimen name="spinner_height">38dp</dimen>
     <dimen name="fab_margin">16dp</dimen>

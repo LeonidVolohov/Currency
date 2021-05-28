@@ -23,6 +23,7 @@ class MainActivityBottom : AppCompatActivity() {
             .replace(R.id.fragment_container, selectedFragment)
             .commitNow()
         bottom_navigation_view.setOnNavigationItemSelectedListener(navigationListener)
+        bottom_navigation_view.selectedItemId = R.id.currency_tab
     }
 
     private val navigationListener: BottomNavigationView.OnNavigationItemSelectedListener =
