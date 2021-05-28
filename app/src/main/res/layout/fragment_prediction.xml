@@ -55,8 +55,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraint_info"
-        android:layout_width="404dp"
-        android:layout_height="106dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/constraint_spinners">
