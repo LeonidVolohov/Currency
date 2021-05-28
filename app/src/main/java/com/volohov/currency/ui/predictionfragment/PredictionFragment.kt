@@ -153,4 +153,14 @@ class PredictionFragment : Fragment() {
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
     }
+
+    override fun onPause() {
+        super.onPause()
+        compositeDisposable.clear()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        compositeDisposable.dispose()
+    }
 }

@@ -196,4 +196,14 @@ class ChartFragment : Fragment() {
             }
         }
     }
+
+    override fun onPause() {
+        super.onPause()
+        compositeDisposable.clear()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        compositeDisposable.dispose()
+    }
 }

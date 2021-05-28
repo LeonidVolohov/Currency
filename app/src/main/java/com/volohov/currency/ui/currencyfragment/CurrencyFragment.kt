@@ -178,16 +178,6 @@ class CurrencyFragment : Fragment() {
         }
     }
 
-    override fun onPause() {
-        super.onPause()
-        compositeDisposable.clear()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        compositeDisposable.dispose()
-    }
-
     private fun changeToDefaultValue() {
         last_date_update.text = ""
         first_primary_currency_result.text = ""
@@ -199,5 +189,15 @@ class CurrencyFragment : Fragment() {
         textview_differenies_yesterday_result.text = ""
         textview_differenies_last_month_result.text = ""
         textview_differenies_last_year_result.text = ""
+    }
+
+    override fun onPause() {
+        super.onPause()
+        compositeDisposable.clear()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        compositeDisposable.dispose()
     }
 }
