@@ -16,6 +16,7 @@
     <string name="toast_check_internet">Please, check internet connection! Turn on the internet RIGHT NOW!!!</string>
     <string name="toast_wrong_input">Wrong input</string>
     <string name="toast_api_returned_null">Server didn\'t respond, please try again later</string>
+    <string name="toast_calendar_canceled_selection">Cancelled selection</string>
 
     <string-array name="rates">
         <item>AUD, Australian Dollar</item>

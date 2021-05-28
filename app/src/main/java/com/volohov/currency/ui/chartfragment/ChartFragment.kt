@@ -5,13 +5,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.google.android.material.datepicker.CalendarConstraints
+import com.google.android.material.datepicker.MaterialDatePicker
 import com.volohov.currency.R
 import com.volohov.currency.ui.UiConstants
 import com.volohov.currency.ui.chart.StockLineChart
 import com.volohov.currency.ui.currency.CurrencyUtils
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.fragment_chart.*
+import java.time.Instant
+import java.time.Period
+import java.time.ZoneId
+import java.time.ZonedDateTime
+import java.time.format.DateTimeFormatter
+import java.util.*
 
 class ChartFragment : Fragment() {
     private var defaultCurrencyInd = UiConstants.DEFAULT_CURRENCY_ID
@@ -21,6 +30,11 @@ class ChartFragment : Fragment() {
     private lateinit var targetRateSpinnerString: String
 
     private var count: Int = 0
+
+    private val startCustomDateLimit: ZonedDateTime
+        get() = ZonedDateTime.now(ZoneId.systemDefault()) - Period.of(5, 0, 0)
+    private val endCustomDateLimit: ZonedDateTime
+        get() = ZonedDateTime.now(ZoneId.systemDefault())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -130,6 +144,53 @@ class ChartFragment : Fragment() {
                             stockLineChart = currencyLineChart,
                             context = requireContext()
                         )
+                    }
+                    R.id.currency_togglebutton_custom_period_selector -> {
+                        var startDateTime: String
+                        var endDateTime: String
+                        val now = Calendar.getInstance()
+                        val picker = MaterialDatePicker.Builder.dateRangePicker()
+                            .setSelection(
+                                androidx.core.util.Pair(
+                                    now.timeInMillis,
+                                    now.timeInMillis
+                                )
+                            )
+                            .setCalendarConstraints(
+                                CalendarConstraints.Builder()
+                                    .setStart(startCustomDateLimit.toInstant().toEpochMilli())
+                                    .setEnd(endCustomDateLimit.toInstant().toEpochMilli())
+                                    .build()
+                            )
+                            .build()
+                        picker.addOnPositiveButtonClickListener {
+                            val startInstant = Instant.ofEpochMilli(it.first ?: 0)
+                            val endInstant = Instant.ofEpochMilli(it.second ?: 0)
+                            startDateTime =
+                                ZonedDateTime.ofInstant(startInstant, ZoneId.systemDefault())
+                                    .format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
+                            endDateTime =
+                                ZonedDateTime.ofInstant(endInstant, ZoneId.systemDefault())
+                                    .format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
+
+                            currencyUtils.plotRatesPerPeriod(
+                                startDate = startDateTime,
+                                endDate = endDateTime,
+                                targetRate = targetRateSpinnerString,
+                                baseRate = baseRateSpinnerString,
+                                stockLineChart = currencyLineChart,
+                                context = requireContext()
+                            )
+                        }
+                        picker.addOnNegativeButtonClickListener {
+                            Toast.makeText(
+                                requireContext(),
+                                getString(R.string.toast_calendar_canceled_selection),
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+
+                        picker.show(activity?.supportFragmentManager!!, picker.toString())
                     }
                 }
             }
