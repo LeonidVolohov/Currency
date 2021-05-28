@@ -136,31 +136,17 @@
             card_view:strokeWidth="1dp" />
     </com.google.android.material.button.MaterialButtonToggleGroup>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraint_chart"
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/currency_chart"
         android:layout_width="0dp"
-        android:layout_height="300dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/margin_padding_size_medium"
+        android:layout_marginEnd="@dimen/margin_padding_size_small"
+        android:layout_marginTop="@dimen/margin_padding_size_medium"
+        android:layout_marginBottom="@dimen/margin_padding_size_medium"
+        android:focusableInTouchMode="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/currency_button_group"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintVertical_chainStyle="spread_inside" >
-
-        <com.github.mikephil.charting.charts.LineChart
-            android:id="@+id/currency_chart"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="@dimen/margin_padding_size_medium"
-            android:layout_marginEnd="@dimen/margin_padding_size_small"
-            android:layout_marginTop="@dimen/margin_padding_size_medium"
-            android:layout_marginBottom="@dimen/margin_padding_size_medium"
-            android:focusableInTouchMode="true"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
+        app:layout_constraintTop_toBottomOf="@id/currency_button_group"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

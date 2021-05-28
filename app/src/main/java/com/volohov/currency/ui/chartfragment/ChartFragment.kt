@@ -66,11 +66,11 @@ class ChartFragment : Fragment() {
                 targetRateSpinnerString = ratesNameArray[position].split(",")[0]
                 currencyLineChart.clearChart()
 
-                if(count != 0) {
+                if(count > 1) {
                     currencyUtils.plotRatesPerPeriod(
                         startDate = "1W",
-                        targetRate = targetRateSpinnerString,
                         baseRate = baseRateSpinnerString,
+                        targetRate = targetRateSpinnerString,
                         stockLineChart = currencyLineChart,
                         context = requireContext()
                     )
@@ -134,7 +134,5 @@ class ChartFragment : Fragment() {
                 }
             }
         }
-
-
     }
 }

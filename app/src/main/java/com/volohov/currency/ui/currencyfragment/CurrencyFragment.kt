@@ -1,6 +1,5 @@
 package com.volohov.currency.ui.currencyfragment
 
-//import kotlinx.android.synthetic.main.activity_main.*
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -12,6 +11,7 @@ import androidx.fragment.app.Fragment
 import com.volohov.currency.R
 import com.volohov.currency.api.currencylayer.CurrencyLayerUtils
 import com.volohov.currency.ui.UiConstants
+import com.volohov.currency.ui.UiConstants.Companion.PRIMARY_CURRENCIES_NAME
 import com.volohov.currency.ui.currency.CurrencyUtils
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
@@ -56,7 +56,7 @@ class CurrencyFragment : Fragment() {
             ) {
                 baseRateSpinnerString = ratesNameArray[position].split(",")[0]
                 rate_number.setText(UiConstants.DEFAULT_EDIT_TEXT_NUMBER.toString())
-                rate_result.text = ""
+                changeToDefaultValue()
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {}
@@ -71,7 +71,7 @@ class CurrencyFragment : Fragment() {
             ) {
                 targetRateSpinnerString = ratesNameArray[position].split(",")[0]
                 rate_number.setText(UiConstants.DEFAULT_EDIT_TEXT_NUMBER.toString())
-                rate_result.text = ""
+                changeToDefaultValue()
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {}
@@ -79,7 +79,7 @@ class CurrencyFragment : Fragment() {
 
         calculate_button.setOnClickListener {
             if (baseRateSpinnerString == targetRateSpinnerString) {
-                rate_result.text = currencyUtils.stringMultiplication(
+                textview_differenies_today_result.text = currencyUtils.stringMultiplication(
                     rate_number.text.toString(),
                     UiConstants.DEFAULT_EDIT_TEXT_NUMBER.toString()
                 )
@@ -93,10 +93,9 @@ class CurrencyFragment : Fragment() {
                 }
 
                 if (isNumeric) {
-                    val primaryCurrenciesName = "USD,EUR,GBP,JPY,CHF"
                     disposable = CurrencyLayerUtils().getTargetRatePrice(
                         baseRate = baseRateSpinnerString,
-                        targetRate = "$targetRateSpinnerString,$primaryCurrenciesName"
+                        targetRate = "$targetRateSpinnerString,$PRIMARY_CURRENCIES_NAME"
                     )
                         .subscribe(
                             { response ->
@@ -108,7 +107,7 @@ class CurrencyFragment : Fragment() {
                                     date.toString()
                                 )
 
-                                rate_result.text = currencyUtils.stringMultiplication(
+                                textview_differenies_today_result.text = currencyUtils.stringMultiplication(
                                     response.quotes[baseRateSpinnerString + targetRateSpinnerString].toString(),
                                     rate_number.text.toString()
                                 )
@@ -190,13 +189,13 @@ class CurrencyFragment : Fragment() {
     }
 
     private fun changeToDefaultValue() {
-        rate_result.text = ""
         last_date_update.text = ""
         first_primary_currency_result.text = ""
         second_primary_currency_result.text = ""
         third_primary_currency_result.text = ""
         fourth_primary_currency_result.text = ""
         fifth_primary_currency_result.text = ""
+        textview_differenies_today_result.text = ""
         textview_differenies_yesterday_result.text = ""
         textview_differenies_last_month_result.text = ""
         textview_differenies_last_year_result.text = ""
