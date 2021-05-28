@@ -1,6 +1,5 @@
 package com.volohov.currency.api.currencylayer
 
-import android.util.Log
 import com.volohov.currency.api.ApiConstants.Companion.CURRENCYLAYER_API_KEY
 import com.volohov.currency.api.currencyLayerApi
 import io.reactivex.Observable
@@ -22,6 +21,23 @@ class CurrencyLayerUtils {
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
     }
+
+    fun getHistoricalRatePrice(
+        baseRate: String,
+        targetRate: String,
+        date: String,
+        apiKey: String = CURRENCYLAYER_API_KEY
+    ): Observable<CurrencyLayerDataModel.CurrencyTargetRateData> {
+        return currencyLayerApi.getHistoricalRatePrice(
+            baseRate = baseRate,
+            targetRate = targetRate,
+            date = date,
+            apiKey = apiKey
+        )
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+    }
+
 
     fun getConvertRatePrice (
         baseRate: String,
