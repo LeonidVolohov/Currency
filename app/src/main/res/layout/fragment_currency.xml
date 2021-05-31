@@ -161,7 +161,7 @@
                     android:layout_alignParentTop="true"
                     android:layout_alignParentStart="true"
                     android:textSize="@dimen/text_size_medium"
-                    android:text="Today" />
+                    android:text="@string/today_cardview" />
 
                 <TextView
                     android:id="@+id/textview_differenies_today_result"
@@ -194,7 +194,7 @@
                     android:layout_alignParentTop="true"
                     android:layout_alignParentStart="true"
                     android:textSize="@dimen/text_size_medium"
-                    android:text="Yesterday" />
+                    android:text="@string/yesterday_cardview" />
 
                 <TextView
                     android:id="@+id/textview_differenies_yesterday_result"
@@ -227,7 +227,7 @@
                     android:layout_marginBottom="@dimen/margin_padding_size_small"
                     android:layout_alignParentStart="true"
                     android:textSize="@dimen/text_size_medium"
-                    android:text="Last month" />
+                    android:text="@string/last_month_cardview" />
 
                 <TextView
                     android:id="@+id/textview_differenies_last_month_result"
@@ -260,7 +260,7 @@
                     android:layout_alignParentTop="true"
                     android:layout_alignParentStart="true"
                     android:textSize="@dimen/text_size_medium"
-                    android:text="Last year" />
+                    android:text="@string/last_year_cardview" />
 
                 <TextView
                     android:id="@+id/textview_differenies_last_year_result"
@@ -328,7 +328,7 @@
                     android:layout_marginEnd="@dimen/margin_padding_size_medium"
                     android:layout_marginBottom="@dimen/margin_padding_size_small"
                     android:layout_toEndOf="@id/first_country_image"
-                    android:text="USD"
+                    android:text="@string/usd_cardview"
                     android:textSize="@dimen/text_size_medium" />
 
                 <TextView
@@ -374,7 +374,7 @@
                     android:layout_marginEnd="@dimen/margin_padding_size_medium"
                     android:layout_marginBottom="@dimen/margin_padding_size_small"
                     android:layout_toEndOf="@id/second_country_image"
-                    android:text="EUR"
+                    android:text="@string/eur_cardview"
                     android:textSize="@dimen/text_size_medium" />
 
                 <TextView
@@ -419,7 +419,7 @@
                     android:layout_marginEnd="@dimen/margin_padding_size_medium"
                     android:layout_marginBottom="@dimen/margin_padding_size_small"
                     android:layout_toEndOf="@id/third_country_image"
-                    android:text="GBP"
+                    android:text="@string/gbp_cardview"
                     android:textSize="@dimen/text_size_medium" />
 
                 <TextView
@@ -464,7 +464,7 @@
                     android:layout_marginEnd="@dimen/margin_padding_size_medium"
                     android:layout_marginBottom="@dimen/margin_padding_size_small"
                     android:layout_toEndOf="@id/fourth_country_image"
-                    android:text="JPY"
+                    android:text="@string/jpy_cardview"
                     android:textSize="@dimen/text_size_medium" />
 
                 <TextView
@@ -509,7 +509,7 @@
                     android:layout_marginEnd="@dimen/margin_padding_size_medium"
                     android:layout_marginBottom="@dimen/margin_padding_size_smaller"
                     android:layout_toEndOf="@id/fifth_country_image"
-                    android:text="CHF"
+                    android:text="@string/chf_cardview"
                     android:textSize="@dimen/text_size_medium" />
 
                 <TextView
@@ -526,8 +526,5 @@
                     tools:text="1.023040" />
             </RelativeLayout>
         </RelativeLayout>
-
-
     </com.google.android.material.card.MaterialCardView>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

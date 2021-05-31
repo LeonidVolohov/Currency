@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.volohov.currency.R
 import com.volohov.currency.api.currencylayer.CurrencyLayerUtils
+import com.volohov.currency.ui.CurrencyUtils
 import com.volohov.currency.ui.UiConstants
 import com.volohov.currency.ui.UiConstants.Companion.PRIMARY_CURRENCIES_NAME
 import io.reactivex.disposables.CompositeDisposable
@@ -96,7 +97,7 @@ class CurrencyFragment(private val defaultCurrencyId: Int) : Fragment() {
                     )
                         .subscribe(
                             { response ->
-                                val date = SimpleDateFormat("EEEE, d MMMM yyyy HH:mm:ss").format(
+                                val date = SimpleDateFormat("EEEE, d MMMM yyyy HH:mm:ss", resources.configuration.locale).format(
                                     Date(Timestamp(response.timestamp).time)
                                 )
                                 last_date_update.text = this.getString(

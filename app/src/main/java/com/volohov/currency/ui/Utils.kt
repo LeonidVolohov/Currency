@@ -1,4 +1,4 @@
-package com.volohov.currency.ui.currencyfragment
+package com.volohov.currency.ui
 
 import android.content.Context
 import android.widget.Toast
@@ -197,8 +197,8 @@ class CurrencyUtils(disposable: Disposable?) {
             entries.toTypedArray(),
             currentDaysInMonth
         )
-        val predictionRateMax = predictionRate * 1.5
-        val predictionRateMin = predictionRate * 0.5
+        val predictionRateMax = predictionRate * 1.25
+        val predictionRateMin = predictionRate * 0.75
         for (i in 1..currentDaysInMonth) {
             val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
             val predictionDate: String = (LocalDate

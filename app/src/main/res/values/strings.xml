@@ -1,32 +1,49 @@
 <resources>
     <string name="app_name">Currency</string>
 
-    <string name="edittext_constant_multiplier">1.0</string>
+    <!-- Chart screen -->
+    <string name="edittext_constant_multiplier" translatable="false">1.0</string>
     <string name="one_week_period_button_text">1W</string>
     <string name="one_month_period_button_text">1M</string>
     <string name="six_months_period_button_text">6M</string>
     <string name="one_year_period_button_text">1Y</string>
     <string name="five_years_period_button_text">5Y</string>
 
+    <!-- Currency screen -->
     <string name="edittext_constant_hint">Amount</string>
     <string name="button_query_result">Push</string>
-    <string name="switch_prediction">Prediction</string>
     <string name="last_updated_date">Data for: %1$s</string>
+    <string name="today_cardview">Today</string>
+    <string name="yesterday_cardview">Yesterday</string>
+    <string name="last_month_cardview">Last month</string>
+    <string name="last_year_cardview">Last year</string>
+    <string name="usd_cardview" translatable="false">USD</string>
+    <string name="eur_cardview" translatable="false">EUR</string>
+    <string name="gbp_cardview" translatable="false">GBP</string>
+    <string name="jpy_cardview" translatable="false">JPY</string>
+    <string name="chf_cardview" translatable="false">CHF</string>
 
-    <string name="toast_check_internet">Please, check internet connection! Turn on the internet RIGHT NOW!!!</string>
+    <!-- Prediction screen -->
+    <string name="rate_for_today">Rate for today:</string>
+    <string name="rate_for_tomorrow">Rate for tomorrow:</string>
+
+    <!-- Info strings -->
+    <string name="toast_check_internet">Please, check internet connection! Check Wi-Fi or mobile connection!</string>
     <string name="toast_wrong_input">Wrong input</string>
     <string name="toast_api_returned_null">Server didn\'t respond, please try again later</string>
     <string name="toast_calendar_canceled_selection">Cancelled selection</string>
 
+    <!-- BottomNavigationView names -->
     <string name="chart">Chart</string>
     <string name="currency">Currency</string>
     <string name="prediction">Prediction</string>
 
-    <string name="default_currency_selector_text">Choose your main currency</string>
-    <string name="language_selection_text">Choose your language</string>
+    <!-- Start screen -->
+    <string name="default_currency_selector_text" translatable="false">Choose your main currency</string>
+    <string name="language_selection_text" translatable="false">Choose your language</string>
     <string name="english_language_label" translatable="false">ENG</string>
     <string name="russian_language_label" translatable="false">RU</string>
-    <string name="preferences_setup_button_text">Let`s go!</string>
+    <string name="preferences_setup_button_text" translatable="false">Let`s go!</string>
 
     <string-array name="rates">
         <item>AUD, Australian Dollar</item>
