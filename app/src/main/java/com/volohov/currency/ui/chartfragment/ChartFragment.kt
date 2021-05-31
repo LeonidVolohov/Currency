@@ -10,9 +10,8 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.volohov.currency.R
-import com.volohov.currency.ui.UiConstants
 import com.volohov.currency.ui.chart.StockLineChart
-import com.volohov.currency.ui.currency.CurrencyUtils
+import com.volohov.currency.ui.currencyfragment.CurrencyUtils
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.fragment_chart.*
 import java.time.Instant
@@ -22,8 +21,7 @@ import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
 
-class ChartFragment : Fragment() {
-    private var defaultCurrencyInd = UiConstants.DEFAULT_CURRENCY_ID
+class ChartFragment(private val defaultCurrencyId: Int) : Fragment() {
     private var compositeDisposable = CompositeDisposable()
 
     private lateinit var baseRateSpinnerString: String
@@ -55,7 +53,7 @@ class ChartFragment : Fragment() {
 
         val ratesNameArray = resources.getStringArray(R.array.rates)
 
-        base_rate_spinner.setSelection(defaultCurrencyInd)
+        base_rate_spinner.setSelection(defaultCurrencyId)
         base_rate_spinner?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parent: AdapterView<*>?,

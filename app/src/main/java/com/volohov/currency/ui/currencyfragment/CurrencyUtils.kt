@@ -1,4 +1,4 @@
-package com.volohov.currency.ui.currency
+package com.volohov.currency.ui.currencyfragment
 
 import android.content.Context
 import android.widget.Toast

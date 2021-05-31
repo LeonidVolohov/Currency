@@ -3,17 +3,17 @@
 
     <item
         android:id="@+id/chart_tab"
-        android:title="Chart"
+        android:title="@string/chart"
         android:icon="@drawable/ic_line_chart"/>
 
     <item
         android:id="@+id/currency_tab"
-        android:title="Currency"
+        android:title="@string/currency"
         android:icon="@drawable/ic_money_exchange" />
 
     <item
         android:id="@+id/prediction_tab"
-        android:title="Prediction"
+        android:title="@string/prediction"
         android:icon="@drawable/ic_future" />
 
 </menu>
