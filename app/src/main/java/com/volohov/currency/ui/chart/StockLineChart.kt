@@ -15,10 +15,10 @@ class StockLineChart(lineChart: LineChart) {
     private var localLineChart = lineChart
 
     init {
-        setChartSetting()
+        initChartSettings()
     }
 
-    private fun setChartSetting() {
+    private fun initChartSettings() {
         this.localLineChart.setTouchEnabled(true)
         this.localLineChart.setPinchZoom(true)
         this.localLineChart.setDrawGridBackground(true)

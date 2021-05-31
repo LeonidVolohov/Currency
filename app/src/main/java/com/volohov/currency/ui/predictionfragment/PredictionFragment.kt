@@ -12,7 +12,7 @@ import com.volohov.currency.api.currencyalphavantage.CurrencyAlphaVantageUtils
 import com.volohov.currency.calculations.Prediction
 import com.volohov.currency.ui.UiConstants
 import com.volohov.currency.ui.chart.StockLineChart
-import com.volohov.currency.ui.currency.CurrencyUtils
+import com.volohov.currency.ui.currencyfragment.CurrencyUtils
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import kotlinx.android.synthetic.main.fragment_prediction.*
@@ -20,8 +20,7 @@ import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
-class PredictionFragment : Fragment() {
-    private var defaultCurrencyInd = UiConstants.DEFAULT_CURRENCY_ID
+class PredictionFragment(private val defaultCurrencyId: Int) : Fragment() {
     private var compositeDisposable = CompositeDisposable()
     private var disposable: Disposable? = null
 
@@ -29,7 +28,6 @@ class PredictionFragment : Fragment() {
     private lateinit var targetRateSpinnerString: String
 
     private var count: Int = 0
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,7 +49,7 @@ class PredictionFragment : Fragment() {
         val currencyUtils = CurrencyUtils(disposable = compositeDisposable)
         val currencyLineChart = StockLineChart(currency_chart)
 
-        base_rate_spinner.setSelection(defaultCurrencyInd)
+        base_rate_spinner.setSelection(defaultCurrencyId)
         base_rate_spinner?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parent: AdapterView<*>?,

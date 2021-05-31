@@ -12,7 +12,6 @@ import com.volohov.currency.R
 import com.volohov.currency.api.currencylayer.CurrencyLayerUtils
 import com.volohov.currency.ui.UiConstants
 import com.volohov.currency.ui.UiConstants.Companion.PRIMARY_CURRENCIES_NAME
-import com.volohov.currency.ui.currency.CurrencyUtils
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import kotlinx.android.synthetic.main.fragment_currency.*
@@ -22,9 +21,7 @@ import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.util.*
 
-class CurrencyFragment : Fragment() {
-
-    private var defaultCurrencyInd = UiConstants.DEFAULT_CURRENCY_ID
+class CurrencyFragment(private val defaultCurrencyId: Int) : Fragment() {
 
     private var compositeDisposable = CompositeDisposable()
     private var disposable: Disposable? = null
@@ -46,7 +43,7 @@ class CurrencyFragment : Fragment() {
 
         val currencyUtils = CurrencyUtils(disposable = compositeDisposable)
 
-        base_rate_spinner.setSelection(defaultCurrencyInd)
+        base_rate_spinner.setSelection(defaultCurrencyId)
         base_rate_spinner?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parent: AdapterView<*>?,

@@ -1,239 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
-        android:id="@+id/last_date_update"
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottom_navigation_view"/>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="@dimen/margin_padding_size_medium"
-        android:layout_marginTop="@dimen/margin_padding_size_small"
-        android:layout_marginEnd="@dimen/margin_padding_size_small"
-        android:layout_marginBottom="@dimen/margin_padding_size_small"
-        android:paddingEnd="@dimen/margin_padding_size_medium"
-        android:paddingStart="@dimen/margin_padding_size_medium"
-        android:textSize="@dimen/text_size_smallest"
-        android:gravity="center"
-        tools:text="Данные на: 20.20.2020" />
-
-    <LinearLayout
-        android:id="@+id/first_linear"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@id/last_date_update">
-
-        <Spinner
-            android:id="@+id/base_rate_spinner"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="50"
-            android:layout_marginTop="@dimen/margin_padding_size_small"
-            android:layout_marginStart="@dimen/margin_padding_size_medium"
-            android:layout_marginEnd="@dimen/margin_padding_size_small"
-            android:layout_marginBottom="@dimen/margin_padding_size_small"
-            android:textSize="@dimen/text_size_large"
-            android:gravity="center"
-            android:textAlignment="center"
-            android:spinnerMode="dropdown"
-            android:entries="@array/rates" />
-
-        <Spinner
-            android:id="@+id/target_rate_spinner"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="50"
-            android:layout_marginTop="@dimen/margin_padding_size_small"
-            android:layout_marginStart="@dimen/margin_padding_size_small"
-            android:layout_marginEnd="@dimen/margin_padding_size_small"
-            android:layout_marginBottom="@dimen/margin_padding_size_small"
-            android:textSize="@dimen/text_size_large"
-            android:gravity="center"
-            android:textAlignment="center"
-            android:spinnerMode="dropdown"
-            android:entries="@array/rates" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/second_linear"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/first_linear"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true">
-
-
-        <EditText
-            android:id="@+id/rate_number"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_padding_size_medium"
-            android:layout_marginTop="@dimen/margin_padding_size_medium"
-            android:layout_marginEnd="@dimen/margin_padding_size_small"
-            android:layout_marginBottom="@dimen/margin_padding_size_small"
-            android:layout_weight="45"
-            android:textSize="@dimen/text_size_large"
-            android:gravity="center"
-            android:text="@string/edittext_constant_multiplier"
-            android:background="@drawable/rounded_corners"
-            android:inputType="numberDecimal"
-            android:autofillHints="no"
-            android:hint="@string/edittext_constant_hint"
-            android:maxLength="6" />
-
-        <TextView
-            android:id="@+id/rate_result"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_padding_size_small"
-            android:layout_marginTop="@dimen/margin_padding_size_medium"
-            android:layout_marginEnd="@dimen/margin_padding_size_small"
-            android:layout_marginBottom="@dimen/margin_padding_size_small"
-            android:paddingEnd="@dimen/margin_padding_size_medium"
-            android:paddingStart="@dimen/margin_padding_size_medium"
-            android:layout_weight="55"
-            android:textSize="@dimen/text_size_large"
-            android:gravity="end"
-            android:maxLength="12"
-            tools:text="6.75" />
-
-        <TextView
-            android:id="@+id/rate_difference"
-            android:layout_width="1dp"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            android:layout_marginStart="@dimen/margin_padding_size_small"
-            android:layout_marginTop="@dimen/margin_padding_size_medium"
-            android:layout_marginEnd="@dimen/margin_padding_size_small"
-            android:layout_marginBottom="@dimen/margin_padding_size_small"
-            android:paddingEnd="@dimen/margin_padding_size_medium"
-            android:paddingStart="@dimen/margin_padding_size_medium"
-            android:textSize="@dimen/text_size_large"
-            android:gravity="end"
-            android:maxLength="12"
-            tools:text="+2.02" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/third_linear"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/second_linear"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true">
-
-        <com.google.android.material.switchmaterial.SwitchMaterial
-            android:id="@+id/currency_switch"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginStart="@dimen/margin_padding_size_medium"
-            android:layout_marginTop="@dimen/margin_padding_size_small"
-            android:layout_marginEnd="@dimen/margin_padding_size_small"
-            android:layout_marginBottom="@dimen/margin_padding_size_small"
-            android:layout_weight="50"
-            android:gravity="center"
-            android:paddingStart="@dimen/margin_padding_size_medium"
-            android:paddingEnd="@dimen/margin_padding_size_medium"
-            android:text="@string/switch_prediction"
-            android:textSize="@dimen/text_size_medium" />
-
-        <Button
-            android:id="@+id/calculate_button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_padding_size_small"
-            android:layout_marginTop="@dimen/margin_padding_size_small"
-            android:layout_marginEnd="@dimen/margin_padding_size_small"
-            android:layout_marginBottom="@dimen/margin_padding_size_small"
-            android:layout_weight="50"
-            android:background="@drawable/rounded_corners"
-            android:gravity="center"
-            android:text="@string/button_query_result"
-            android:textSize="@dimen/text_size_medium" />
-    </LinearLayout>
-
-
-    <com.google.android.material.button.MaterialButtonToggleGroup
-        android:id="@+id/currency_button_group"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/third_linear"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="@dimen/margin_padding_size_medium"
-        android:layout_marginTop="@dimen/margin_padding_size_smaller"
-        android:layout_marginEnd="@dimen/margin_padding_size_small"
-        card_view:checkedButton="@id/currency_togglebutton_one_week_selector"
-        card_view:selectionRequired="true"
-        card_view:singleSelection="true">
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/currency_togglebutton_one_week_selector"
-            style="?attr/materialButtonOutlinedStyle"
-            android:layout_width="@dimen/toggle_button_width"
-            android:layout_height="wrap_content"
-            android:text="@string/one_week_period_button_text"
-            android:textAlignment="center"
-            android:textSize="@dimen/text_size_smaller"
-            card_view:strokeWidth="1dp" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/currency_togglebutton_one_month_selector"
-            style="?attr/materialButtonOutlinedStyle"
-            android:layout_width="@dimen/toggle_button_width"
-            android:layout_height="wrap_content"
-            android:text="@string/one_month_period_button_text"
-            android:textAlignment="center"
-            android:textSize="14sp"
-            card_view:strokeWidth="1dp" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/currency_togglebutton_six_months_selector"
-            style="?attr/materialButtonOutlinedStyle"
-            android:layout_width="@dimen/toggle_button_width"
-            android:layout_height="wrap_content"
-            android:text="@string/six_months_period_button_text"
-            android:textAlignment="center"
-            android:textSize="@dimen/text_size_smaller"
-            card_view:strokeWidth="1dp" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/currency_togglebutton_one_year_selector"
-            style="?attr/materialButtonOutlinedStyle"
-            android:layout_width="@dimen/toggle_button_width"
-            android:layout_height="wrap_content"
-            android:text="@string/one_year_period_button_text"
-            android:textAlignment="center"
-            android:textSize="@dimen/text_size_smaller"
-            card_view:strokeWidth="1dp" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/currency_togglebutton_five_years_selector"
-            style="?attr/materialButtonOutlinedStyle"
-            android:layout_width="@dimen/toggle_button_width"
-            android:layout_height="wrap_content"
-            android:text="@string/five_years_period_button_text"
-            android:textAlignment="center"
-            android:textSize="@dimen/text_size_smaller"
-            card_view:strokeWidth="1dp" />
-    </com.google.android.material.button.MaterialButtonToggleGroup>
-
-    <com.github.mikephil.charting.charts.LineChart
-        android:id="@+id/currency_chart"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/currency_button_group"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="@dimen/margin_padding_size_medium"
-        android:layout_marginTop="@dimen/margin_padding_size_small"
-        android:layout_marginEnd="@dimen/margin_padding_size_small"
-        android:layout_marginBottom="@dimen/margin_padding_size_medium" />
-</RelativeLayout>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/navigation"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
