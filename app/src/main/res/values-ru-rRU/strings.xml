@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="false">Калькулятор валют</string>
+
+    <!-- Chart screen -->
+    <string name="edittext_constant_multiplier" translatable="false">1.0</string>
+    <string name="one_week_period_button_text">1Н</string>
+    <string name="one_month_period_button_text">1М</string>
+    <string name="six_months_period_button_text">6М</string>
+    <string name="one_year_period_button_text">1Г</string>
+    <string name="five_years_period_button_text">5Л</string>
+
+    <!-- Currency screen -->
+    <string name="edittext_constant_hint">Количество</string>
+    <string name="button_query_result">Нажми</string>
+    <string name="last_updated_date">"Данные на: %1$s"</string>
+    <string name="today_cardview">Сегодня</string>
+    <string name="yesterday_cardview">Вчера</string>
+    <string name="last_month_cardview">За месяц</string>
+    <string name="last_year_cardview">За год</string>
+    <string name="usd_cardview" translatable="false">USD</string>
+    <string name="eur_cardview" translatable="false">EUR</string>
+    <string name="gbp_cardview" translatable="false">GBP</string>
+    <string name="jpy_cardview" translatable="false">JPY</string>
+    <string name="chf_cardview" translatable="false">CHF</string>
+
+    <!-- Prediction screen -->
+    <string name="rate_for_today">Данные на сегодня:</string>
+    <string name="rate_for_tomorrow">Данные на завтра:</string>
+
+    <!-- Info strings -->
+
+    <string name="toast_check_internet">Пожалуйста, проверьте интернет соединене! Попробуйте валючить Wi-Fi или мобильный интернет!</string>
+    <string name="toast_wrong_input">Неправильный ввод</string>
+    <string name="toast_api_returned_null">Сервер не отвечает, пожалуйста, попробуйте позже</string>
+    <string name="toast_calendar_canceled_selection">Отмена выбора</string>
+
+    <!-- BottomNavigationView names -->
+    <string name="chart">График</string>
+    <string name="currency">Валюта</string>
+    <string name="prediction">Прогноз</string>
+
+    <!-- Start screen -->
+    <string name="default_currency_selector_text" translatable="false">Choose your main currency</string>
+    <string name="language_selection_text" translatable="false">Choose your language</string>
+    <string name="english_language_label" translatable="false">ENG</string>
+    <string name="russian_language_label" translatable="false">RU</string>
+    <string name="preferences_setup_button_text" translatable="false">Let`s go!</string>
+</resources>

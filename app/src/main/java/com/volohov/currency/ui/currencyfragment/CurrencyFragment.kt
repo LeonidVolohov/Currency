@@ -96,7 +96,7 @@ class CurrencyFragment(private val defaultCurrencyId: Int) : Fragment() {
                     )
                         .subscribe(
                             { response ->
-                                val date = SimpleDateFormat("EEEE, d MMMM yyyy HH:mm:ss").format(
+                                val date = SimpleDateFormat("EEEE, d MMMM yyyy HH:mm:ss", resources.configuration.locale).format(
                                     Date(Timestamp(response.timestamp).time)
                                 )
                                 last_date_update.text = this.getString(
