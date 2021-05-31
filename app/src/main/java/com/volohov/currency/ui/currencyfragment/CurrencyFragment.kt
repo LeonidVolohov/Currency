@@ -1,7 +1,6 @@
 package com.volohov.currency.ui.currencyfragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -110,18 +109,25 @@ class CurrencyFragment(private val defaultCurrencyId: Int) : Fragment() {
                                     rate_number.text.toString()
                                 )
 
-                                first_primary_currency_result.text = response.quotes[baseRateSpinnerString + "USD"].toString()
-                                second_primary_currency_result.text = response.quotes[baseRateSpinnerString + "EUR"].toString()
-                                third_primary_currency_result.text = response.quotes[baseRateSpinnerString + "GBP"].toString()
-                                fourth_primary_currency_result.text = response.quotes[baseRateSpinnerString + "JPY"].toString()
-                                fifth_primary_currency_result.text = response.quotes[baseRateSpinnerString + "CHF"].toString()
+                                first_primary_currency_result.text =
+                                    response.quotes[baseRateSpinnerString + "USD"]?.let { it -> currencyUtils.doubleScale(it)}
 
-                                val test = response.quotes[baseRateSpinnerString + targetRateSpinnerString].toString()
+                                second_primary_currency_result.text =
+                                    response.quotes[baseRateSpinnerString + "EUR"]?.let { it -> currencyUtils.doubleScale(it)}
+
+                                third_primary_currency_result.text =
+                                    response.quotes[baseRateSpinnerString + "GBP"]?.let { it -> currencyUtils.doubleScale(it)}
+
+                                fourth_primary_currency_result.text =
+                                    response.quotes[baseRateSpinnerString + "JPY"]?.let { it -> currencyUtils.doubleScale(it)}
+
+                                fifth_primary_currency_result.text =
+                                    response.quotes[baseRateSpinnerString + "CHF"]?.let { it -> currencyUtils.doubleScale(it)}
 
                                 val yesterday = LocalDate.now().minusDays(1).format(DateTimeFormatter.ofPattern("yyyy-MM-dd")).toString()
                                 val lastMonth = LocalDate.now().minusMonths(1).format(DateTimeFormatter.ofPattern("yyyy-MM-dd")).toString()
                                 val lastYear = LocalDate.now().minusYears(1).format(DateTimeFormatter.ofPattern("yyyy-MM-dd")).toString()
-                                Log.i("date", "$yesterday, $lastMonth, $lastYear")
+
                                 disposable = CurrencyLayerUtils().getHistoricalRatePrice(
                                     baseRate = baseRateSpinnerString,
                                     targetRate = targetRateSpinnerString,
@@ -129,7 +135,8 @@ class CurrencyFragment(private val defaultCurrencyId: Int) : Fragment() {
                                 )
                                     .subscribe(
                                         { response ->
-                                            textview_differenies_yesterday_result.text = response.quotes[baseRateSpinnerString + targetRateSpinnerString].toString()
+                                            textview_differenies_yesterday_result.text =
+                                                response.quotes[baseRateSpinnerString + targetRateSpinnerString]?.let { it -> currencyUtils.doubleScale(it)}
                                         },
                                         { failure ->
                                             Toast.makeText(context, failure.message.toString(), Toast.LENGTH_LONG).show()
@@ -143,7 +150,8 @@ class CurrencyFragment(private val defaultCurrencyId: Int) : Fragment() {
                                 )
                                     .subscribe(
                                         { response ->
-                                            textview_differenies_last_month_result.text = response.quotes[baseRateSpinnerString + targetRateSpinnerString].toString()
+                                            textview_differenies_last_month_result.text =
+                                                response.quotes[baseRateSpinnerString + targetRateSpinnerString]?.let { it -> currencyUtils.doubleScale(it)}
                                         },
                                         { failure ->
                                             Toast.makeText(context, failure.message.toString(), Toast.LENGTH_LONG).show()
@@ -157,7 +165,8 @@ class CurrencyFragment(private val defaultCurrencyId: Int) : Fragment() {
                                 )
                                     .subscribe(
                                         { response ->
-                                            textview_differenies_last_year_result.text = response.quotes[baseRateSpinnerString + targetRateSpinnerString].toString()
+                                            textview_differenies_last_year_result.text =
+                                                response.quotes[baseRateSpinnerString + targetRateSpinnerString]?.let { it -> currencyUtils.doubleScale(it)}
                                         },
                                         { failure ->
                                             Toast.makeText(context, failure.message.toString(), Toast.LENGTH_LONG).show()
