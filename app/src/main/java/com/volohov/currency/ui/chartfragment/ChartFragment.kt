@@ -10,8 +10,8 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.volohov.currency.R
+import com.volohov.currency.ui.CurrencyUtils
 import com.volohov.currency.ui.chart.StockLineChart
-import com.volohov.currency.ui.currencyfragment.CurrencyUtils
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.fragment_chart.*
 import java.time.Instant

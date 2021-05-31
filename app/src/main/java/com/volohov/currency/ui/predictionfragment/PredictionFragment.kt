@@ -10,9 +10,9 @@ import androidx.fragment.app.Fragment
 import com.volohov.currency.R
 import com.volohov.currency.api.currencyalphavantage.CurrencyAlphaVantageUtils
 import com.volohov.currency.calculations.Prediction
+import com.volohov.currency.ui.CurrencyUtils
 import com.volohov.currency.ui.UiConstants
 import com.volohov.currency.ui.chart.StockLineChart
-import com.volohov.currency.ui.currencyfragment.CurrencyUtils
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import kotlinx.android.synthetic.main.fragment_prediction.*
